@@ -4,7 +4,23 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        Science: "#14F60F",
+        Geography: "#45A5FF",
+        Sports: "#FF9A35",
+        Entertainment: "#EF1DEF",
+        History: "#FDF328",
+        Primary: "#5132D9",
+        Secondary: "#8153D4",
+        Tables: "#FFEBEB",
+        Worng: "#FF5454",
+        WrongLight: "#FFA9A9",
+        Correct: "#7CFF67",
+        CorrectLight: "#BAFFAF",
+        Dark: "#080D0D",
+      },
+    },
   },
   plugins: [],
 }
