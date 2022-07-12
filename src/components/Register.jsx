@@ -1,7 +1,3 @@
-
-
-
-
 const Register = () => {
     return (
         <div className="flex bg-[url('https://images.unsplash.com/photo-1600921413222-7d4324c17035?ixlib=rb-1.2.1&ixid=MnwxM[…]90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80&w=1171')] bg-no-repeat bg-cover bg-center h-screen w-full justify-center items-center">
@@ -10,8 +6,8 @@ const Register = () => {
                 <div className="flex flex-col gap-6 ">
                     <input className="h-12 w-48 rounded-full px-6" type="text" placeholder="Usuario.."/>
                     <input className="h-12 w-48 rounded-full px-6" type="text" placeholder="Email..."/>
-                    <input className="h-12 w-48 rounded-full px-6" type="text" placeholder="Contraseña.."/>
-                    <input className="h-12 w-48 rounded-full px-6" type="text" placeholder="Repetir contraseña..."/>
+                    <input className="h-12 w-48 rounded-full px-6" type="password" placeholder="Contraseña.."/>
+                    <input className="h-12 w-48 rounded-full px-6" type="password" placeholder="Repetir contraseña..."/>
                 </div>
                 <button className="text-white font-bold text-2xl w-fit px-10 h-12 rounded-full bg-Entertainment">Registrarse</button>
                 <div>
