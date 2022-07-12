@@ -9,7 +9,7 @@ const Login = () => {
                 <p className="text-white font-bold text-3xl">Login <span className="text-History">Solidario</span></p>
                 <div className="flex flex-col gap-6 ">
                     <input className="h-12 w-48 rounded-full px-6" type="text" placeholder="Email..."/>
-                    <input className="h-12 w-48 rounded-full px-6" type="text" placeholder="Password..."/>
+                    <input className="h-12 w-48 rounded-full px-6" type="text" placeholder="Contraseña..."/>
                 </div>
                 <button className="text-white font-bold text-2xl w-fit px-10 h-12 rounded-full bg-Entertainment">Login</button>
                 <p className=" text-white font-bold text-xl">Si no tienes cuenta...<a href="/Register"><span className=" text-Entertainment">Regístrate ya!</span></a></p>
