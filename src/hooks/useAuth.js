@@ -28,15 +28,21 @@ export const useAuth = () => {
 }
 
 const useProvideAuth = () => {
-
+    
     const [user, setUser] = useState(null);
     const [error, setError] = useState(null);
+    
+    const register = async (formData) => {
+        return await ApiClient.get('/sanctum/csrf-cookie').then(async response => {
+            await ApiClient.post('/api/auth/register', formData).catch(error => console.log(error));
+        }).catch(error => console.log(error));
+    }
 
-    const login = async (data) => {
+    const login = async (formData) => {
 
         return await ApiClient.get('/sanctum/csrf-cookie').then(async response => {
 
-            await ApiClient.post('/api/auth/login', data).then(response => {
+            await ApiClient.post('/api/auth/login', formData).then(response => {
 
                 setUser(response.data);
                 window.localStorage.setItem('user', response.data);
@@ -75,11 +81,11 @@ const useProvideAuth = () => {
 
     }, [])
 
-    // const register = async () => {}
 
     return {
         user,
         login,
-        logout
+        logout,
+        register
     }
 }

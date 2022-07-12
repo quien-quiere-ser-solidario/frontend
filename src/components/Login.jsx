@@ -35,7 +35,7 @@ const Login = () => {
                     <input className="h-12 w-48 rounded-full px-6" id="email" type="email" name="email" placeholder="Email..."/>
                     <input className="h-12 w-48 rounded-full px-6" id="password" type="password" name="password" placeholder="Contraseña..."/>
                 </div>
-                <button onClick={(e) => signIn(e)} type="submit" className="text-white font-bold text-2xl w-fit px-10 h-12 rounded-full bg-Entertainment">Login</button>
+                <button type="submit" onClick={(e) => signIn(e)} className="text-white font-bold text-2xl w-fit px-10 h-12 rounded-full bg-Entertainment">Login</button>
                 <div>
                     <p className=" text-white font-bold text-lg">Si no tienes cuenta...</p>
                     <p><a href="/Register"><span className="font-bold text-xl text-Entertainment">Regístrate ya!</span></a></p>
