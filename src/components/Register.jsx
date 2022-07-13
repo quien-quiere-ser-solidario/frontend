@@ -9,20 +9,13 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState(''); 
-    const [submitting, setSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [errors, setErrors] = useState({});
 
     const auth = useAuth();
 
-    useEffect(() => {
-        console.log(errors);
-    }, [errors])
-
-    console.log('render');
-
-    const signUp = async () => {
-
+    const signUp = async (event) => {
+        event.preventDefault();
         const formData = {
             'username': username,
             'email': email,
@@ -30,22 +23,12 @@ const Register = () => {
             'repeat-password': repeatPassword,
         }
 
-        console.log(formData);
-
         auth.register(formData).then(() => setSubmitted(true)).catch(error => {
             const errorsObject = error.response.data.errors;
 
             setErrors(errorsObject);
         });
 
-    }
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
-        setSubmitting(true);
-
-        signUp();
     }
 
     return (
@@ -94,7 +77,7 @@ const Register = () => {
                                 )}
                                 <input required className="h-12 w-48 rounded-full px-6" id="repeat-password" name="repeat-pasword" type="password" onChange={(event) => setRepeatPassword(event.target.value)} value={repeatPassword} placeholder="Repetir contraseña..."/>
                             </div>
-                            <button type="submit" onClick={(event) => handleSubmit(event)} className="text-white font-bold text-2xl w-fit px-10 h-12 rounded-full bg-Entertainment">Registrarse</button>
+                            <button type="submit" onClick={(event) => signUp(event)} className="text-white font-bold text-2xl w-fit px-10 h-12 rounded-full bg-Entertainment">Registrarse</button>
                             <div>
                                 <p className=" text-white font-bold text-lg">¿Ya tienes cuenta?</p>
                                 <p><a href="/Login"><span className="font-bold text-xl text-History">Login</span></a></p>
