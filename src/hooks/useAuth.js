@@ -30,12 +30,15 @@ export const useAuth = () => {
 const useProvideAuth = () => {
     
     const [user, setUser] = useState(null);
-    const [error, setError] = useState(null);
     
     const register = async (formData) => {
         return await ApiClient.get('/sanctum/csrf-cookie').then(async response => {
-            await ApiClient.post('/api/auth/register', formData).catch(error => console.log(error));
-        }).catch(error => console.log(error));
+            await ApiClient.post('/api/auth/register', formData).then(response => response).catch(e => {
+                throw e
+            });
+        }).catch(e => {
+            throw e
+        });
     }
 
     const login = async (formData) => {
@@ -49,16 +52,15 @@ const useProvideAuth = () => {
 
                 return response.data
 
-            }).catch(error => {
+            }).catch(e => {
 
-                console.log(error.message);
-
-                return error.message;
+                throw e
 
             }); 
 
-        }).catch(error => {
-            console.log(error.message);
+        }).catch(e => {
+            
+            throw e
         });
     }
 
@@ -66,8 +68,8 @@ const useProvideAuth = () => {
         return await ApiClient.post('/api/auth/logout').then(response => {
             setUser(false);
             window.localStorage.removeItem('user');
-        }).catch(error => {
-            console.log(error.message);
+        }).catch(e => {
+            throw e
         });
     }
 
