@@ -36,9 +36,9 @@ const Register = () => {
                 (<Navigate to="/login" />) : 
                 (
                     <div className="flex bg-[url('https://images.unsplash.com/photo-1600921413222-7d4324c17035?ixlib=rb-1.2.1&ixid=MnwxM[…]90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80&w=1171')] bg-no-repeat bg-cover bg-center h-screen w-screen justify-center items-center">
-                        <form className="flex flex-col bg-Dark w-4/5 md:w-2/4 lg:w-2/6 rounded-3xl justify-evenly py-8 gap-10 items-center">
+                        <form className="flex flex-col bg-Dark max-h-full w-4/5 md:w-2/4 lg:w-2/6 rounded-3xl justify-evenly py-6 gap-10 items-center">
                             <p className="text-white font-bold text-2xl">Register <span className="text-Entertainment">Solidario</span></p>
-                            <div className="flex flex-col gap-6 w-full h-full px-6">
+                            <div className="flex flex-col gap-4 w-full h-full px-6">
                                 {errors.username && (
                                     <div className="text-white font-bold px-1">
                                         {errors.username.map(error => <p>{error}</p>)}
