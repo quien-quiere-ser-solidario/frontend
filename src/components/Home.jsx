@@ -11,7 +11,11 @@ const Home = () => {
     }
 
     return (
-        <div>
+        <div class="w-screen h-screen bg-black">
+            <div class="flex flex-col items-center">
+                <img className="w-24" src="https://i.ibb.co/xg6VZY0/Logo.png" alt="Logo"/>
+
+            </div>
             You're logged in!
             <button onClick={(e) => logout(e)}>Log Out!</button>
         </div>
