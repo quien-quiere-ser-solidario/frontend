@@ -14,12 +14,11 @@ const Login = () => {
     const signIn = async (event) => {
 
         event.preventDefault();
+        
         const formData = {
             email: email,
             password: password
         }
-
-        console.log(formData);
 
         auth.login(formData).catch(e => {
             const errorsObject = e.response.data.errors;
