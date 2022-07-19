@@ -12,8 +12,8 @@ const Landing = () => {
             <p className="text-white font-bold px-10 text-xl">¡En <span className="text-History">Quien quiere ser solidario?</span> podrás <span className="text-Entertainment">jugar</span>  partidas de Trivia y <span className="text-Entertainment">competir</span> con las demás personas por un ranking mensual!</p>
             <div className="flex flex-col items-center">
                 <p className="text-white font-bold px-6 text-2xl">¿Y aún no tienes cuenta en <span className="text-History">Quien quiere ser solidario?</span></p>
-                <a href="/Register" className="flex flex-col bg-Secondary h-20 w-fit text-white rounded-3xl py-3 px-2 text-2xl font-bold my-4 justify-center">¡Registrate ya para jugar!</a>
-                <p className=" text-white font-bold text-xl">Si ya tiene cuenta, <a href="/Login"><span className=" text-History">inicia sesión</span></a>.</p>
+                <a href="/register" className="flex flex-col bg-Secondary h-20 w-fit text-white rounded-3xl py-3 px-2 text-2xl font-bold my-4 justify-center">¡Registrate ya para jugar!</a>
+                <p className=" text-white font-bold text-xl">Si ya tiene cuenta, <a href="/login"><span className=" text-History">inicia sesión</span></a>.</p>
             </div>
         </div>
     );

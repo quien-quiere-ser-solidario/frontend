@@ -3,6 +3,7 @@ import Landing from "./Landing";
 import Home from "./Home";
 import Login from "./Login";
 import Register from "./Register";
+import Juego from "./Juego";
 import { useAuth } from '../hooks/useAuth';
 
 const AppRouter = () => {
@@ -13,12 +14,12 @@ const AppRouter = () => {
                     <Landing />
                 </GuestRoute>
             } />
-            <Route path="/Login" element={
+            <Route path="/login" element={
                 <GuestRoute path="/login">
                     <Login />
                 </GuestRoute>
             } />
-            <Route path="/Register" element={
+            <Route path="/register" element={
                 <GuestRoute path="/register">
                     <Register />
                 </GuestRoute>
@@ -26,6 +27,11 @@ const AppRouter = () => {
             <Route path="/home" element={
                 <PrivateRoute path="/home">
                     <Home />
+                </PrivateRoute>
+            } />
+            <Route path="/juego" element={ 
+                <PrivateRoute path="/juego">
+                    <Juego />
                 </PrivateRoute>
             } />
         </Routes>
