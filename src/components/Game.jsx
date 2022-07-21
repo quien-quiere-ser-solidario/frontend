@@ -39,9 +39,7 @@ const Game = () => {
         setAnswered(true);
         setCurrentQuestion(question);
         
-        if (pointer == questions.length -1) {
-            setFinished(true);
-        }
+        
         
         setIsCorrect(false);
 
@@ -77,6 +75,9 @@ const Game = () => {
         
     }
     const startGame = () => {
+        if (pointer == questions.length -1) {
+            setFinished(true);
+        }
         const question = questions[pointer];
         setAnswered(false);
         setNext(false);

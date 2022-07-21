@@ -21,13 +21,11 @@ const Register = () => {
             'password': password,
             'repeat-password': repeatPassword,
         }
-
         auth.register(formData).then(() => setSubmitted(true)).catch(error => {
             const errorsObject = error.response.data.errors;
 
             setErrors(errorsObject);
         });
-
     }
 
     return (
