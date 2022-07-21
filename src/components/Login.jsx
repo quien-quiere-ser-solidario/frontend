@@ -35,17 +35,17 @@ const Login = () => {
                 <p className="text-white font-bold text-3xl">Login <span className="text-History">Solidario</span></p>
                 <div className="flex flex-col gap-4 w-full h-full px-6 items-center">
                     <input required className="rounded-full py-3 px-6 lg:w-2/3" id="email" name="email" type="email" onChange={(event) => setEmail(event.target.value)} value={email} placeholder="Email..." />
-                    {errors.password && (
-                        <div className="text-white font-bold px-1">
-                            {errors.password.map(error => <p>{error}</p>)}
-                        </div>
+                    {errors.email && (
+                        <>
+                            {errors.email.map(error => <p className="text-white py-2 font-bold">{error}</p>)}
+                        </>
                     )}
                     <input required className="rounded-full py-3 px-6 lg:w-2/3" id="password" type="password" name="password" onChange={(event) => setPassword(event.target.value)} value={password}  placeholder="Contraseña.."/>
-                                {errors["repeat-password"] && (
-                                    <div className="text-white font-bold px-1">
-                                        {errors["repeat-password"].map(error => <p>{error}</p>)}
-                                    </div>
-                                )}
+                    {errors.password && (
+                        <>
+                            {errors.password.map(error => <p className="text-white py-2 font-bold">{error}</p>)}
+                        </>
+                    )}
                 </div>
                 <button type="submit" onClick={(e) => signIn(e)} className="text-white font-bold text-2xl w-fit px-10 h-12 rounded-full bg-Entertainment">Login</button>
                 <div>
