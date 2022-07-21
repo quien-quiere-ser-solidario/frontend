@@ -8,12 +8,31 @@ const Game = () => {
     const [questions, setQuestions] = useState(null);
     const [answered, setAnswered] = useState(false);
     const [finished, setFinished] = useState(false);
+    const [next, setNext] = useState(false);
     const [score, setScore] = useState(0);
     const [isCorrect, setIsCorrect] = useState(false);
     const [pointer, setPointer] = useState(0);
     const [currentQuestion, setCurrentQuestion] = useState(null);
     const [answerDisplay, setAnswerDisplay] = useState(null);
-
+    
+    useEffect(() => {
+        const fetchData = async () => {
+            
+            await ApiClient.get('api/game/questions').then(response => {
+                setQuestions(response.data);
+                setLoaded(true);
+            }).catch(e => e);
+        }
+        if (questions == null) {
+            fetchData();
+        }
+    })
+    
+    useEffect(() => {
+        if (loaded) {
+            startGame();
+        }
+    }, [loaded, pointer])
     
     const handleClickAnswer = (event) => {
         const question = questions[pointer];
@@ -50,38 +69,34 @@ const Game = () => {
             }
         })
         
-        setAnswerDisplay(answerList);  
+        setAnswerDisplay(answerList);
+
+        setTimeout(() => {
+            setNext(true);
+        }, 3000)
         
     }
     const startGame = () => {
         const question = questions[pointer];
         setAnswered(false);
+        setNext(false);
         setCurrentQuestion(question);
 
         const answersList = question.answers.map((answer, index) => <button key={index} id={index} onClick={(event) => handleClickAnswer(event)} className="bg-Secondary w-full h-full text-xl p-7 rounded-2xl font-bold pointer">{answer.answer}</button>)
         setAnswerDisplay(answersList);
         
     }
+    const nextQuestion = () => {
+        setPointer(pointer + 1);
+    }
 
-    useEffect(() => {
-        const fetchData = async () => {
-            
-            await ApiClient.get('api/game/questions').then(response => {
-                setQuestions(response.data);
-                setLoaded(true);
-            }).catch(e => e);
-        }
-        if (questions == null) {
-            fetchData();
-        }
-    })
-
-    useEffect(() => {
-        if (loaded) {
-            startGame();
-        }
-    }, [loaded, pointer])
-
+    if (finished) {
+        return (
+            <div>
+                Ha terminado el juego :D
+            </div>
+        )
+    }
     
     if (answered && currentQuestion) {
         if (isCorrect) {
@@ -91,8 +106,8 @@ const Game = () => {
                         <div className="w-full flex justify-end">
                             <p className="text-white text-xl font-bold p-6">Puntuación: {score}</p>
                         </div>
-                        <div>
-                            <p className="text-Correct text-2xl font-bold">¡Correcto! +100 puntos</p>
+                        <div className="p-6">
+                            {next ? <button onClick={nextQuestion} className="text-white bg-Secondary rounded-2xl p-3">Siguiente pregunta</button> : <p className="text-Correct text-2xl font-bold">¡Correcto! +100 puntos</p>}
                         </div>
                     </div>
                     <div className="w-full bg-Primary h-1/2 text-3xl text-white flex items-center justify-center text-white">
@@ -110,8 +125,8 @@ const Game = () => {
                     <div className="w-full flex justify-end">
                         <p className="text-white text-xl font-bold p-6">Puntuación: {score}</p>
                     </div>
-                    <div>
-                        <p className="text-Wrong text-2xl font-bold">¡Incorrecto! +0 puntos</p>
+                    <div className="p-6">
+                        {next ? <button onClick={nextQuestion} className="text-white bg-Secondary rounded-2xl p-3">Siguiente pregunta</button> : <p className="text-Wrong text-2xl font-bold">¡Incorrecto! +0 puntos</p>}
                     </div>
                 </div>
                 <div className="w-full bg-Primary h-1/2 text-3xl text-white flex items-center justify-center text-white">
@@ -141,7 +156,11 @@ const Game = () => {
     }
 
     return (
-        <div className="w-screen h-screen bg-Dark flex items-center justify-center text-white font-bold text-2xl">Loading</div>
+        <div className="w-screen h-screen bg-Dark flex items-center justify-center text-white font-bold text-2xl gap-6">Loading
+                <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full " role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+        </div>
     )
 }
 
