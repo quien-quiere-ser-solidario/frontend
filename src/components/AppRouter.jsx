@@ -3,54 +3,23 @@ import Landing from "./Landing";
 import Home from "./Home";
 import Login from "./Login";
 import Register from "./Register";
-import Juego from "./Juego";
+import Game from "./Game";
+import Ranking from './Ranking';
 import { useAuth } from '../hooks/useAuth';
 
-const AppRouter = () => {
-    return (
-        <Routes>
-            <Route path="/" element={
-                <GuestRoute path="/">
-                    <Landing />
-                </GuestRoute>
-            } />
-            <Route path="/login" element={
-                <GuestRoute path="/login">
-                    <Login />
-                </GuestRoute>
-            } />
-            <Route path="/register" element={
-                <GuestRoute path="/register">
-                    <Register />
-                </GuestRoute>
-            } />
-            <Route path="/home" element={
-                <PrivateRoute path="/home">
-                    <Home />
-                </PrivateRoute>
-            } />
-            <Route path="/juego" element={ 
-                <PrivateRoute path="/juego">
-                    <Juego />
-                </PrivateRoute>
-            } />
-        </Routes>
-    );
-}
-
-const PrivateRoute = ({ children }) => {
+const RestrictedRoute = ({ children }) => {
 
     const auth = useAuth();
     const location = useLocation();
-
-    if (!auth.user) {
-        return <Navigate to="/login" state={{ from: location }} />
+    
+    if (auth.user === false) {
+        return <Navigate to="/" state={{ from: location }} />
     }
 
     return children
 }
 
-const GuestRoute = ({ children }) => {
+const AnonymousRoute = ({ children }) => {
     const auth = useAuth();
     const location = useLocation();
 
@@ -60,5 +29,42 @@ const GuestRoute = ({ children }) => {
 
     return children
 }
+const AppRouter = () => {
+    return (
+        <Routes>
+            <Route path="/" element={
+                <AnonymousRoute>
+                    <Landing />
+                </AnonymousRoute>
+            } />
+            <Route path="/login" element={
+                <AnonymousRoute>
+                    <Login />
+                </AnonymousRoute>
+            } />
+            <Route path="/register" element={
+                <AnonymousRoute>
+                    <Register />
+                </AnonymousRoute>
+            } />
+            <Route path="/play" element={ 
+                <RestrictedRoute>
+                    <Game />
+                </RestrictedRoute>
+            } />
+            <Route path="/ranking" element={
+                <RestrictedRoute>
+                    <Ranking />
+                </RestrictedRoute>
+            } />
+            <Route path="/home" element={
+                <RestrictedRoute>
+                    <Home />
+                </RestrictedRoute>
+            } />
+        </Routes>
+    );
+}
+
 
 export default AppRouter;

@@ -65,11 +65,19 @@ const useProvideAuth = () => {
     }
 
     const logout = async () => {
-        return await ApiClient.post('/api/auth/logout').then(response => {
-            setUser(false);
-            window.localStorage.removeItem('user');
-        }).catch(e => {
-            throw e
+        return await ApiClient.get('/sanctum/csrf-cookie').then(async () => { 
+
+            await ApiClient.post('/api/auth/logout').then(response => {
+
+                setUser(false);
+                window.localStorage.removeItem('user');
+
+            }).catch(e => {
+
+                throw e
+
+            })
+
         });
     }
 

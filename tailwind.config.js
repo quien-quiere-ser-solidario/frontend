@@ -15,7 +15,7 @@ module.exports = {
         Primary: "#5132D9",
         Secondary: "#8153D4",
         Tables: "#FFEBEB",
-        Worng: "#FF5454",
+        Wrong: "#FF5454",
         WrongLight: "#FFA9A9",
         Correct: "#7CFF67",
         CorrectLight: "#BAFFAF",
