@@ -106,7 +106,9 @@ const Game = () => {
         const info = {
             'score': score
         }
-        await ApiClient.post('api/scores/store', info).then(response => console.log(response)).catch(e => console.error(e));
+        await ApiClient.get('sanctum/csrf-cookie').then(() => {
+            ApiClient.post('api/scores/store', info).then(response => console.log(response)).catch(e => console.error(e));
+        });
     }
     const nextQuestion = () => {
         setPointer(pointer + 1);
