@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { Navigate } from 'react-router-dom';
 
@@ -20,9 +19,9 @@ const logout = () => {
                 <h1 className="text-History font-bold text-2xl">¿Quien quiere ser solidario?</h1>
             </div>
             <div className='flex flex-col justify-center items-center'>
-                <a href='play' className="flex items-center justify-center text-white font-bold text-2xl w-fit px-10 h-20 rounded-3xl bg-Primary mb-2 ">¡JUGAR!</a>
-                <a href='ranking' className="flex items-center justify-center font-bold text-2xl w-fit px-10 h-14 rounded-full bg-Entertainment mb-2">Ver Rankings</a>
-                <button className="text-white font-bold text-2xl w-fit px-10 h-14 rounded-full bg-Geography mb-2" onClick={logout}>Logout</button>
+                <a href='/play' className="flex items-center justify-center text-white font-bold text-2xl w-fit px-10 py-8 rounded-3xl bg-Primary mb-2 ">¡JUGAR!</a>
+                <a href='/ranking' className="flex items-center justify-center font-bold text-2xl w-fit px-10 py-4 rounded-full bg-Entertainment mb-2">Ver Rankings</a>
+                <button className="text-white font-bold text-2xl w-fit px-8 py-3 rounded-full bg-Wrong mb-2" onClick={logout}>Cerrar sesión</button>
             </div>
         </div>
     )

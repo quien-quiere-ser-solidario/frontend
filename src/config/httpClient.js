@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const ApiClient = axios.create({
-    baseURL: 'https://qqss-admin.herokuapp.com/',
+    baseURL: 'http://localhost:8000/',
     headers: {
         'X-Requested-With': 'XMLHttpRequest'
     },
