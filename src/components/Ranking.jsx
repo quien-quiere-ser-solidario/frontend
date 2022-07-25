@@ -20,7 +20,7 @@ const Ranking = () => {
     }, [scores])
     
     const getScores = async () => {
-        await ApiClient.get('api/scores/').then(response => {
+        await ApiClient.get('api/scores').then(response => {
             setScores(response.data);
             setLoaded(true);
         }).catch((error) => {
