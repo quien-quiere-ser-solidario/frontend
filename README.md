@@ -9,6 +9,17 @@ Cada mes, se elegirá un ganador (que será el que más puntos tenga), y este de
 
 ## Imágenes del Juego
 
+![Landing](https://bigbae18.github.io/trivial/landing.PNG)
+![Login](https://bigbae18.github.io/trivial/loginreact.PNG)
+![Register](https://bigbae18.github.io/trivial/register.PNG)
+![Home](https://bigbae18.github.io/trivial/home.PNG)
+![Ranking](https://bigbae18.github.io/trivial/ranking.PNG)
+![Game](https://bigbae18.github.io/trivial/question.PNG)
+![Correct](https://bigbae18.github.io/trivial/correct.PNG)
+![Wrong](https://bigbae18.github.io/trivial/incorrect.PNG)
+![Next](https://bigbae18.github.io/trivial/next.PNG)
+![Results](https://bigbae18.github.io/trivial/result.PNG)
+
 ## Juego Quiz
 
 En esta Aplicación Web debes registrarte para empezar a jugar. Una vez hayas introducido tus datos y te lleve para entrar, vuelve a introducirlos para verificar que está todo correcto y ya lo tienes todo!
