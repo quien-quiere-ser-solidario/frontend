@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+Sobre Quien quiere ser Solidario?
+Quien quiere ser Solidario es una aplicación web que te permite divertirte y entrenar tu agilidad mental a través de preguntas Quiz. ¡Podrás también disfrutar de la compañía de tus amigos e incluso competir contra ellos en un ranking mensual!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Cada mes, se elegirá un ganador (que será el que más puntos tenga), y este decidirá a qué Asociación/Organización irá destinado el premio de ese mes.
 
-## Available Scripts
+Quien quiere ser Solidario?
+Imágenes de Inicio de Sesion y el Juego
+Login Users Questions
 
-In the project directory, you can run:
+Equipo:
+Adrián Pelayo - Product Owner
+Sergi Aparicio - Scrum Master
+Abde Belkhialat - Developer
+Guillermo Labrador - Developer
+Juego
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Tecnologías Usadas
+PHP
+Laravel
+Laravel Blade Templates
+Tailwind CSS
+JavaScript (Acciones DOM)
+Dependencias para tener el proyecto en local
+Para poder clonar este repositorio y poder tener el proyecto en local, como requisitos debéis tener instalados:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Git
+Composer
+XAMPP para poder tener acceso a una base de datos y su panel de administración
+NodeJS
+Una vez tengas instaladas estas dependencias en tu ordenador, puedes seguir con el siguiente paso.
 
-### `npm test`
+Set-Up en Local
+Primer paso: Clonar el repositorio
+Abrimos una consola en el lugar donde queremos el proyecto. Escribimos:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+git clone https://github.com/quien-quiere-ser-solidario/backend.git
 
-### `npm run build`
+Una vez se nos haya clonado, se nos habrá creado una nueva carpeta frontend en la carpeta donde estemos. Para entrar en ella, desde la misma consola escribimos:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+cd frontend
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Segundo paso: Instalar dependencias
+Con la ayuda NPM instalaremos las dependencias que necesita el proyecto para funcionar. Primero de todo, en esa misma consola, escribimos:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+npm install
 
-### `npm run eject`
+Y para cerciorarnos, podemos escribir una vez acabe:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+npm update
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Con estos 2 comandos estaremos listos en lo que son las dependencias.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Y con esto, nos vamos al paso cuatro.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Cuarto paso: Crear la base de datos y habilitar XAMPP
+Con XAMPP instalado, podemos abrir su panel de control y veremos 5 opciones. Entre ellas, un servidor Apache (servidor web), un servidor MySQL (bases de datos), un servidor FileZilla (conexiónes FTP), un servidor Mercury (conexión Mail) y un servidor Tomcat (Servidor servlets para Java). En nuestro caso nos interesan las dos primeras, así que le daremos a la opción que dice:
 
-## Learn More
+Start
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+En las opciones de Apache y MySQL. Una vez nos ponga el nombre con un fondo verde, y se cambie esa opción a stop, querrá decir que podremos ir ya a:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+http://localhost/phpmyadmin
 
-### Code Splitting
+La cual es la página que nos permite XAMPP para manejar nuestro MySQL. Ahí le daremos al botón de la izquierda que dice Nueva con un símbolo cilíndrico y un + verde, y ahí se nos abrirá una página para crear una nueva base de datos. Aquí, pon el nombre que has puesto en el archivo de configuración de variables de entorno en el anterior paso.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Quinto paso: Llenar la base de datos
+Una vez nuestra base de datos esté creada, Laravel tenga las variables de entorno bien predefinidas y hayamos instalado las dependencias, llega el punto de nutrir a nuestra base de datos de tablas.
 
-### Analyzing the Bundle Size
+En una consola en el mismo proyecto podemos escribir el comando:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+php artisan migrate:fresh
 
-### Making a Progressive Web App
+ó, si prefieres usar nuestro generador de datos:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+php artisan migrate:fresh --seed
 
-### Advanced Configuration
+Con esto te creará la estructura de base de datos necesaria como para poder iniciar la aplicación. Por ende ahora podemos escribir, teniendo 2 terminales abiertas en la carpeta de nuestro proyecto:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+php artisan serve npm run watch
 
-### Deployment
+Una vez inicializados los comandos, veréis el resultado en [http://localhost:8000]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Agradecimientos
+Agradecemos a Factoría F5 por nutrirnos de conocimientos para poder llegar a lo que somos, y a nuestro cliente Pablo por el buen trato recibido y el feedback constante.
